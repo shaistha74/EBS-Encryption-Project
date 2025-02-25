@@ -13,6 +13,7 @@ ________________________________________
 ________________________________________
 
 ## 📁 Project Structure
+
 EBS-Encryption-Project/
 │
 ├── .gitignore                   # Ignore sensitive and system files
@@ -33,6 +34,8 @@ EBS-Encryption-Project/
 └── screenshots/                  # Screenshots for manual process and automated process
     ├── ebs1.png
     └── terraebs1.png
+    <img width="457" alt="image" src="https://github.com/user-attachments/assets/87c6a2d4-9926-48bf-a5ff-c814c0544b5f" />
+
 ________________________________________
 
 🖥️ Manual Process (AWS Console)
@@ -58,6 +61,7 @@ Step 1: Automating EBS Creation using Terraform
 1.1 AWS Configuration
 •	Run the following command to configure AWS credentials: 
 •	aws configure
+________________________________________
 1.2 Write Terraform Code
 •	provider.tf → Defines AWS as the provider.
 •	main.tf → Contains resources for EC2 instance and unencrypted EBS volumes.
@@ -65,26 +69,37 @@ Step 1: Automating EBS Creation using Terraform
 •	variables.tf → Manages input variables.
 •	output.tf → Outputs key resource information.
 •	terraform.tfvars → Holds variable values.
+________________________________________
 1.3 Execute Terraform Commands
 terraform init       # Initialize Terraform
 terraform fmt        # Format configuration files
 terraform validate   # Validate the code
 terraform plan       # Preview the changes
 terraform apply      # Apply the infrastructure
+
+<img width="403" alt="image" src="https://github.com/user-attachments/assets/31e240fb-c2bd-4a4c-9afe-9813d51f19cf" />
+
+________________________________________
 1.4 Verify EBS Creation
 •	AWS Management Console: 
 o	Check EBS volumes, snapshots, and EC2 instances.
 o	Connect to the EC2 instance using SSH: 
 o	ssh -i EBSvolkeypair.pem ec2-user@<EC2_PUBLIC_IP>
+<img width="280" alt="image" src="https://github.com/user-attachments/assets/895f067e-b976-43df-9dd9-2bcd3e0ed2fc" />
+
 ________________________________________
+
 Step 2: Encrypting Unencrypted Volumes Using Bash Script
 2.1 Run Bash Script
 •	The Bash script ebs-encryptionhelper.sh automates the encryption process.
+
+________________________________________
 2.2 Verify Encrypted Volumes
 •	AWS Management Console: 
 o	Check the updated EBS volume encryption status.
 •	AWS CLI: 
 •	aws ec2 describe-volumes --query "Volumes[*].{ID:VolumeId,Encrypted:Encrypted}" --region us-east-1
+
 ________________________________________
 Step 3: Scanning Terraform Code Using Checkov
 3.1 Install Checkov
@@ -92,10 +107,13 @@ pip install checkov
 3.2 Run Checkov Scan
 checkov -d /home/kali/EBSVolencryption/
 •	Review security findings and address misconfigurations.
+<img width="523" alt="image" src="https://github.com/user-attachments/assets/e78acd80-d988-4198-9a1e-07292f48eb25" />
+
 ________________________________________
 Step 4: Clean Up Resources
 •	Destroy all resources created by Terraform: 
 •	terraform destroy
+
 ________________________________________
 
 .gitignore Template
@@ -114,10 +132,15 @@ terraform.tfvars
 # Misc
 *.bak
 .DS_Store
+
+<img width="218" alt="image" src="https://github.com/user-attachments/assets/05c7e8d0-db1b-45e4-9ca7-7811259aebf8" />
+
+
 ________________________________________
 ✅ Conclusion
 This project showcases both the manual process using the AWS Management Console and the automated process using Terraform and a Bash script to encrypt unencrypted AWS EBS volumes. It also highlights the importance of code security by scanning the Terraform code using Checkov.
 By following this approach, you ensure that your AWS infrastructure is both secure and compliant with best practices.
+
 ________________________________________
 💡 Tip: Always scan your IaC code before deploying to avoid misconfigurations that could lead to security breaches.
 🔐 Happy Securing!
