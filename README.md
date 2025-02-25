@@ -1,9 +1,21 @@
 # EBS-Encryption-Project
 This project showcases both manual and automated methods for encrypting unencrypted AWS EBS volumes. It uses the AWS Management Console for the manual process and combines Terraform with a Bash script for the automated approach.
 
+💡 Why I Built This Project
+While working with AWS, I noticed that EBS volumes are often left unencrypted due to oversight or complex workflows. However, unencrypted EBS volumes pose significant security risks — making sensitive data vulnerable to unauthorized access and breaches.
+
+I wanted to create a solution that not only demonstrates manual encryption techniques but also showcases Infrastructure as Code (IaC) and automation to secure AWS environments efficiently.
+
+This project serves as a hands-on, real-world demonstration of how to:
+
+Identify unencrypted EBS volumes
+Encrypt them manually and automatically
+Use IaC security checks (with tools like Checkov) to maintain compliance
+Follow AWS security best practices
 ________________________________________
 
 ## 🛠️ Features
+The core goal of this project was to provide a comprehensive framework for EBS data protection using a multi-layered approach:
 - ✅ **Manual EBS Encryption** using AWS Management Console
 - ⚡ **Automated EBS Encryption** using Terraform & Bash
 - 🔍 **Checkov Integration** for Terraform security scanning
@@ -140,6 +152,13 @@ ________________________________________
 ✅ Conclusion
 This project showcases both the manual process using the AWS Management Console and the automated process using Terraform and a Bash script to encrypt unencrypted AWS EBS volumes. It also highlights the importance of code security by scanning the Terraform code using Checkov.
 By following this approach, you ensure that your AWS infrastructure is both secure and compliant with best practices.
+
+________________________________________
+
+✅ What’s Next?
+Explore the GitHub Repo ➔ Dive into the code and try it out yourself!
+Experiment with CSPM Tools ➔ Integrate with Prowler or AWS Security Hub.
+Automate More! ➔ Next, I plan to build pipelines that trigger encryption checks as part of CI/CD workflows
 
 ________________________________________
 💡 Tip: Always scan your IaC code before deploying to avoid misconfigurations that could lead to security breaches.
